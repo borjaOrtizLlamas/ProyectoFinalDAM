@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.company.model.RolUsuarios" table="user_roles" catalog="proyectofinal">
+       
+        <id name="user_role_id" type="int">
+            <column name="user_role_id" />
+            <generator class="identity" />
+        </id>      
+       
+        <property name="role" type="string">
+            <column name="role" length="45" not-null="true"  />
+        </property>
+        
+        
+		<many-to-one class="com.company.model.Usuario" fetch="select" name="usuario"  lazy="false">
+		  <column name="username" not-null="true"/>
+		</many-to-one>
+        
+        
+    </class>
+</hibernate-mapping>

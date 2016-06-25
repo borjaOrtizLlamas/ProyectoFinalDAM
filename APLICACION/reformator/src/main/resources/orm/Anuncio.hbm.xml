@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.company.model.Anuncio" table="anuncios" catalog="proyectofinal">
+        <id name="usuario" type="string">
+            <column name="usuario" />
+            <generator class="foreign">
+                <param name="property">usuarioClase</param>
+            </generator>
+        </id>
+        
+        <one-to-one name="usuarioClase" class="com.company.model.Usuario" constrained="true"></one-to-one>
+        
+        <property name="nombreEmpresa" type="string">
+            <column name="nombre_empresa" length="60" not-null="true"  />
+        </property>
+        
+        <property name="numeroTelefono" type="int">
+            <column name="numero_telefono"  not-null="true"  />
+        </property>
+        
+        <property name="numeroTelefono2" type="int">
+            <column name="numero_telefono2"  not-null="true"  />
+        </property> 
+        
+        
+        <property name="precio" type="double">
+            <column name="precio"   />
+        </property> 
+        
+        <property name="titulo" type="string">
+            <column name="titulo"  not-null="true"  />
+        </property> 
+        
+        <property name="texto" type="string">
+            <column name="texto" length="500"  not-null="true" />
+        </property>       
+                      
+        <property name="comunidadAutonoma" type="string">
+            <column name="comunidad_autonoma" length="60"  not-null="true" />
+        </property>      
+         
+        <property name="tipoProfesional" type="string">
+            <column name="tipo_profesional" length="60"  not-null="true" />
+        </property>  
+        <property name="imagen" type="string">
+            <column name="imagen" length="60"  not-null="false" />
+        </property>  
+
+ 
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.company.model.Usuario" table="users" catalog="proyectofinal">
+		<id name="usuario" type="string">
+		    <column name="username" />
+		</id>
+		
+		<property name="contrasena" type="string">
+		    <column name="password" length="60" not-null="true" />
+		</property>
+		
+		<property name="habilitado" type="boolean">
+		    <column name="enabled"  not-null="true"  />
+		</property>
+		
+		<property name="email" type="string">
+		    <column name="email" length="60" not-null="true" unique="true" />
+		</property>
+        
+        <set name="rolUsuario" table="user_roles" cascade="all-delete-orphan"	inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="username" not-null="true" />
+            </key>
+            <one-to-many class="com.company.model.RolUsuarios" />
+        </set>
+        
+        
+    </class>
+    
+</hibernate-mapping>
